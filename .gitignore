@@ -119,3 +119,7 @@ dist
 .pnp.*
 
 application/cypress/screenshots
+
+# IDE related
+.vscode/
+.idea/

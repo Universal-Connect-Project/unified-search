@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run  -p 8080:8080 unified_search
+docker run --name ucp-search -p 8082:8082 ucp-search

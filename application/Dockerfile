@@ -1,15 +1,18 @@
-FROM node:17
+FROM alpine:3.19.1
+ENV NODE_VERSION 20.12.2
 
-# Create app directory
+RUN apk --update --no-cache add nodejs npm
+
 WORKDIR /app
 
-COPY ./ ./
+COPY package.json package-lock.json /app/
 
-RUN npm install
-RUN npm install -g nodemon 
-#COPY --from=build-frontend /app/dist ./views
+RUN npm ci --omit=dev && \
+    npm i -g nodemon
+
+COPY . .
 
 ENV Env prod
+EXPOSE 8082
 
-EXPOSE 8080
 CMD nodemon ./server/index.js
