@@ -13,7 +13,7 @@ const config = {
   DataLoadIntervalSeconds: 30,
   AnalyticsServiceEndpoint: 'https://analytics.universalconnectproject.org/api/',
   AuthServiceEndpoint: 'https://login.universalconnectproject.org/api/',
-  DataBaseUrl: 'http://static.universalconnectproject.org.s3.us-west-2.amazonaws.com/search/',
+  DATABASE_URL: 'http://static.universalconnectproject.org.s3.us-west-2.amazonaws.com/search/',
   S3Bucket: 'dev.universalconnectproject.org', // leave blank to use local server hardcoded preference
   LocalDefaultProvider: 'sophtron', //default provider config when S3Bucket is not used.
   AwsRegion: 'us-west-2',

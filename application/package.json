@@ -7,7 +7,7 @@
     "dev": "npx nodemon server/index.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "jest --no-coverage",
+    "test": "jest --no-coverage --passWithNoTests",
     "test:watch": "jest --no-coverage --watch",
     "test:coverage": "npm test -- --verbose --coverage --watchAll",
     "test:clear": "npm test -- --clearCache"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "cypress": "^13.7.3",
+    "msw": "^2.2.14",
     "nodemon": "^3.0.3",
     "ts-jest": "^29.1.2"
   }
