@@ -62,7 +62,7 @@ async function loadData(){
     return
   }
 
-  logger.info(`loading data, version: ${version}, ${elapsedSeconds()}s`);
+  logger.info(`Loading data, version: ${version}, ${elapsedSeconds()}s`);
 
   const response = await axios.get(config.DataBaseUrl + `db/${version}.csv`, {
     responseType: 'stream'
@@ -84,7 +84,7 @@ async function loadData(){
 
   logger.info(`loaded data: ${arr.length}, ${elapsedSeconds()}s`);
   ret.data = arr.map((row) => row[0]);
-  logger.info(`loading index, version: ${version}, ${elapsedSeconds()}s`);
+  logger.info(`Loading index, version: ${version}, ${elapsedSeconds()}s`);
   //ret.searchIndex = tools.buildIndex(arr); 
 
   const indexResponse = await axios.get(config.DataBaseUrl + `db/${version}.txt`, {
@@ -97,7 +97,7 @@ async function loadData(){
     ret.searchIndex = tools.buildIndex(arr); 
   }else{
     ret.searchIndex = await utils.processFileStream(indexStream, tools.deserializeIndexRow, new Map())
-    logger.info(`loaded index: ${ret.searchIndex.size}, ${elapsedSeconds()}s`);
+    logger.info(`Loaded index: ${ret.searchIndex.size}, ${elapsedSeconds()}s`);
   }
 
   let providers = arr[0][4].replace('foreignKeys(', '').replace(')', '').split(';')

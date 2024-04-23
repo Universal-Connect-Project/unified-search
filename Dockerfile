@@ -7,7 +7,8 @@ WORKDIR /app
 
 COPY package.json package-lock.json /app/
 
-RUN npm ci --omit=dev && \
+RUN npm pkg delete scripts.prepare && \
+    npm ci --omit=dev && \
     npm i -g nodemon
 
 COPY ./src .
