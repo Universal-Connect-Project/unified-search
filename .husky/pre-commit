@@ -1,1 +1,3 @@
 npm test
+# Use this when errors are fixed....right now there are too many to fix without breaking things.
+# prettier --write . && lint-staged && npm run test && git add -A .
