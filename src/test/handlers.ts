@@ -6,7 +6,7 @@
 // export const INSTITUTION_BY_ID_PATH = `${MX_BASE_PATH}/institutions/:institutionId`
 // export const INSTITUTION_CREDENTIALS_BY_ID_PATH = `${MX_BASE_PATH}/institutions/:institutionId/credentials`
 
-const handlers = [
+const handlers: any[] = [
   // http.get(INSTITUTION_BY_ID_PATH, () => HttpResponse.json(institutionData)),
   // http.get(INSTITUTION_CREDENTIALS_BY_ID_PATH, () => HttpResponse.json(institutionCredentialsData))
 ]
