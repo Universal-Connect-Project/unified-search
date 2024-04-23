@@ -10,7 +10,9 @@
     "test": "jest --no-coverage --passWithNoTests",
     "test:watch": "jest --no-coverage --watch",
     "test:coverage": "npm test -- --verbose --coverage --watchAll",
-    "test:clear": "npm test -- --clearCache"
+    "test:clear": "npm test -- --clearCache",
+    "precommit": "lint-staged",
+    "prepare": "husky"
   },
   "author": "",
   "license": "MIT",
@@ -32,8 +34,24 @@
     "eslint": "^8.57.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-jest": "^28.2.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "msw": "^2.2.14",
     "nodemon": "^3.0.3",
     "ts-jest": "^29.1.2"
+  },
+  "lint-staged": {
+    "{.eslintrc.js}": [
+      "prettier --write"
+    ],
+    "*.{js[x],ts[x]}": [
+      "npm run lint -- --cache --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write . && lint-staged && npm run test && git add -A ."
+    }
   }
+
 }

@@ -48,18 +48,22 @@ function weightByPerformance(metrics, pref){
 
 async function loadData(){
   let start = new Date();
+
   function elapsedSeconds(){
     return (new Date() - start) / 1000;
   }
+
   let versions = await axios.get(`${config.DataBaseUrl}version.json`).then(res => res.data);
   let version = versions[config.Env ? config.Env.toLowerCase() : 'dev'];
   let ret = {version};
+
   if(db.version === version){
-    logger.info(`DataBaseUrl ${config.DataBaseUrl}`)
-    logger.info(`Data version unchanged: ${db.version} == ${version}`)
+    logger.info(`Data version unchanged: ${version}`)
     return
   }
+
   logger.info(`loading data, version: ${version}, ${elapsedSeconds()}s`);
+
   const response = await axios.get(config.DataBaseUrl + `db/${version}.csv`, {
     responseType: 'stream'
   }).catch(err => {
@@ -67,14 +71,17 @@ async function loadData(){
       return [];
     }
   });
+
   const stream = response?.data;
   if(!stream){
     return [];
   }
+
   let arr = (await utils.processCsv(stream));
   if(!arr){
     return [];
   }
+
   logger.info(`loaded data: ${arr.length}, ${elapsedSeconds()}s`);
   ret.data = arr.map((row) => row[0]);
   logger.info(`loading index, version: ${version}, ${elapsedSeconds()}s`);
@@ -83,6 +90,7 @@ async function loadData(){
   const indexResponse = await axios.get(config.DataBaseUrl + `db/${version}.txt`, {
     responseType: 'stream'
   }).catch(err => {})
+
   const indexStream = indexResponse?.data;
   if(!indexStream){
     logger.warning(`Unable to find cached index, building, ${elapsedSeconds()}s`)
@@ -98,6 +106,7 @@ async function loadData(){
     if(index === 0){
       return obj;
     }
+
     let item = {
       id: row[0],
       name: row[1].replace(config.CsvEscape, ','),
@@ -105,12 +114,14 @@ async function loadData(){
       logo_url: row[3],
       fks: {}
     }
+
     let fks = row[4].split(';');
     for(let i = 0; i < providers.length; i++){
       if(fks[i]){
         item.fks[providers[i]] = fks[i]
       }
     }
+
     // consider returning the only provider entry so resolving is not needed
     // if(Object.keys(item.fks).length === 1){
     //   item.provider = Object.keys()[0];
@@ -119,6 +130,7 @@ async function loadData(){
     obj.set(item.id, item);
     return obj;
   }, new Map())
+
   logger.info(`Initial data loaded and indexed, ${elapsedSeconds()}s`);
   db = ret;
 }
