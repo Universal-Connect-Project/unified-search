@@ -55,7 +55,8 @@ async function loadData(){
   let version = versions[config.Env];
   let ret = {version};
   if(db.version === version){
-    logger.info(`Data version unchanged: ${version}`)
+    logger.info(`DataBaseUrl ${config.DataBaseUrl}`)
+    logger.info(`Data version unchanged: ${db.version} == ${version}`)
     return
   }
   logger.info(`loading data, version: ${version}, ${elapsedSeconds()}s`);
