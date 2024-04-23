@@ -1,7 +1,6 @@
-
-const axios = require('axios');
-const config = require('../config');
-const logger = require('../../infra/logger');
+const axios = require('axios')
+const config = require('../config')
+const logger = require('../../infra/logger')
 
 const finicitySandbox = {
   basePath: 'https://api.finicity.com',
@@ -19,19 +18,19 @@ const finicityProd = {
   provider: 'finicity'
 }
 
-function makeFinicityAuthHeaders(apiConfig, tokenRes){
+function makeFinicityAuthHeaders (apiConfig, tokenRes) {
   return {
     'Finicity-App-Key': apiConfig.appKey,
     'Finicity-App-Token': tokenRes.token,
     'Content-Type': 'application/json',
-    'accept': 'application/json'
+    accept: 'application/json'
   }
 }
 
-function getAuthToken(apiConfig){
+function getAuthToken (apiConfig) {
   return axios.post(apiConfig.basePath + '/aggregation/v2/partners/authentication', {
-    'partnerId': apiConfig.partnerId,
-    'partnerSecret': apiConfig.secret
+    partnerId: apiConfig.partnerId,
+    partnerSecret: apiConfig.secret
   }, {
     headers: {
       'Finicity-App-Key': apiConfig.appKey,
@@ -40,16 +39,16 @@ function getAuthToken(apiConfig){
   }).then(res => res.data)
 }
 
-async function get(apiConfig, path){
-  const token = await getAuthToken(apiConfig);
-  const headers = makeFinicityAuthHeaders(apiConfig, token);
-  const ret = await axios.get(`${apiConfig.basePath}/${path}`, {headers}).then(res => res.data)
-  return ret;
+async function get (apiConfig, path) {
+  const token = await getAuthToken(apiConfig)
+  const headers = makeFinicityAuthHeaders(apiConfig, token)
+  const ret = await axios.get(`${apiConfig.basePath}/${path}`, { headers }).then(res => res.data)
+  return ret
 }
 
-function getInstitutions(env){
-  const apiConfig = env === 'prod' ? finicityProd : finicitySandbox;
-  return get(apiConfig, 'institution/v2/institutions');
+async function getInstitutions (env) {
+  const apiConfig = env === 'prod' ? finicityProd : finicitySandbox
+  return await get(apiConfig, 'institution/v2/institutions')
 }
 
 module.exports = {

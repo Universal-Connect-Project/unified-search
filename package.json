@@ -12,7 +12,9 @@
     "test:coverage": "npm test -- --verbose --coverage --watchAll",
     "test:clear": "npm test -- --clearCache",
     "precommit": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint:fix": "eslint ./src --fix --ext .js,.ts"
   },
   "author": "",
   "license": "MIT",
@@ -33,6 +35,7 @@
     "cypress": "^13.7.3",
     "eslint": "^8.57.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-cypress": "^3.0.0",
     "eslint-plugin-jest": "^28.2.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

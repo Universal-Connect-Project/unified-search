@@ -1,29 +1,29 @@
-require('dotenv').config({override: true});
+require('dotenv').config({ override: true })
 
-const processEnv = {};
-const envs = {...process.env, ...process.client_envs};
+const processEnv = {}
+const envs = { ...process.env, ...process.client_envs }
 Object.keys(envs).forEach((k) => {
-  processEnv[k.toUpperCase()] = envs[k];
-});
+  processEnv[k.toUpperCase()] = envs[k]
+})
 
 const nonSensitiveSharedConfig = {
-  Component: 'unified-search',
-};
+  Component: 'unified-search'
+}
 
 const keysToPullFromEnv = [
-  "LogLevel",
-  "Port",
-  "Env",
-  "Version",
-  "MaxSearchResults",
-  "DataLoadIntervalSeconds",
-  "AnalyticsServiceEndpoint",
-  "AuthServiceEndpoint",
-  "DataBaseUrl",
-  "S3Bucket",
-  "LocalDefaultProvider",
-  "AwsRegion",
-];
+  'LogLevel',
+  'Port',
+  'Env',
+  'Version',
+  'MaxSearchResults',
+  'DataLoadIntervalSeconds',
+  'AnalyticsServiceEndpoint',
+  'AuthServiceEndpoint',
+  'DataBaseUrl',
+  'S3Bucket',
+  'LocalDefaultProvider',
+  'AwsRegion'
+]
 
 const config = keysToPullFromEnv.reduce((acc, envKey) => {
   return {
