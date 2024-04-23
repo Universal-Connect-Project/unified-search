@@ -41,7 +41,7 @@
     "ts-jest": "^29.1.2"
   },
   "lint-staged": {
-    "{.eslintrc.js}": [
+    "{.eslintrc.js,.prettierrc.js}": [
       "prettier --write"
     ],
     "*.{js[x],ts[x]}": [
