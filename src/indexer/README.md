@@ -4,7 +4,7 @@ This folder contains the scripts needed to fetch-link-merge-index the financial 
 
 ## the indexing process:
 - Working in `tools` folder
-- this `indexer/config.js` isn't required by the API service. DO NOT provide credentials to the API config, use a `.evn` file here under `tools` folder
+- this `indexer/config.js` isn't required by the API service. DO NOT provide credentials to the API config, use a `.env` file here under `tools` folder
 - Fetch data from providers' API, `ts-node <provider>Data.js`
   this will generate provider institution list in csv file into the `institutionDataPath` in [config.js](./config.js)
 - Manually managed institution mappings between providers is assumed to be available in the `institutionDataPath`, the schema assumed is in [merge.js](./tools/merge.js)

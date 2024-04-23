@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon server/index.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "dev": "npx nodemon src/server/index.js",
     "test": "jest --no-coverage --passWithNoTests",
     "test:watch": "jest --no-coverage --watch",
     "test:coverage": "npm test -- --verbose --coverage --watchAll",

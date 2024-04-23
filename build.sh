@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t ucp-search ./application 
+docker build -t ucp-search ./src 
