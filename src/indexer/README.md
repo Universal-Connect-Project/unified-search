@@ -19,7 +19,7 @@ This folder contains the scripts needed to fetch-link-merge-index the financial 
     "$env": "$version"
   }
 ```
-- The search API will look for a `verson.json` in the `DATABASE_URL` in [server/config.js](../server/config.js), then use the `Env` value to find the version number, then load `$version.csv` which is the `main.csv` uploaded
+- The search API will look for a `verson.json` in the `DATABASEURL` in [server/config.js](../server/config.js), then use the `Env` value to find the version number, then load `$version.csv` which is the `main.csv` uploaded
 - the API will load the `version.txt` and use too, if it can't find it. it wll call `buildIndex` to make index from the `csv` file
 
 ## Add a new provider

@@ -34,7 +34,7 @@ jobs:
           touch .env
           
           # Vars
-          #echo -e "${{ env.env_vars }}" >> .env
+          #echo -e ${{ env.env_vars }} >> .env
           cat .env
 
       - name: Run Jest Tests

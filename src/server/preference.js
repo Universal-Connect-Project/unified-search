@@ -39,7 +39,7 @@ async function getPreference(req, noDefault){
   }else{
     return null;
   }
-  return defaultPref || (defaultPref = await http.wget(config.DATABASE_URL + 'preferences/default.json'));
+  return defaultPref || (defaultPref = await http.wget(config.DATABASEURL + 'preferences/default.json'));
 }
 
 module.exports = {
