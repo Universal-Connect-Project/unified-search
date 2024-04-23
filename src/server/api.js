@@ -166,23 +166,9 @@ async function searchInstitutions(name, providers){
       }
       if(findings.every((numbers, i) => i === index || numbers.some(t => t.row === item.row ))){
         //filter to remove dup or non-logo entries from matched result
-        // console.log(entry)
         if(entry){
           if(!providers || providers.some(p => entry.fks[p])){
             arr.push(item.row)
-            // if(!urlIndex.has(entry.url)){
-            //   let host = url.parse(entry.url)?.hostname
-            //   if(entry.logo_url){
-            //     domainIndex.add(host);
-            //     nameIndex[entry.name.toLowerCase()] = true;
-            //   }else if(domainIndex.has(host)){
-            //     //return arr;
-            //   }else if(Object.keys(nameIndex).some(i => entry.name.toLowerCase().startsWith(i) && entry.name.length > i.length)){
-            //     // return arr;
-            //   }
-            //   urlIndex.add(entry.url);
-            //   arr.push(item.row)
-            // }
           }
         }
       }

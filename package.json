@@ -53,5 +53,4 @@
       "pre-commit": "prettier --write . && lint-staged && npm run test && git add -A ."
     }
   }
-
 }
