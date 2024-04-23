@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run --name ucp-search -p 8082:8082 ucp-search
+docker run --env-file .env --name ucp-search -p 8082:8082 ucp-search

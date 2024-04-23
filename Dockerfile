@@ -10,7 +10,7 @@ COPY package.json package-lock.json /app/
 RUN npm ci --omit=dev && \
     npm i -g nodemon
 
-COPY . .
+COPY ./src .
 
 ENV Env prod
 EXPOSE 8082

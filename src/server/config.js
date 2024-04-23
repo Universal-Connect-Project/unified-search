@@ -19,7 +19,7 @@ const keysToPullFromEnv = [
   "DataLoadIntervalSeconds",
   "AnalyticsServiceEndpoint",
   "AuthServiceEndpoint",
-  "DataBaseUrl",
+  "DATABASE_URL",
   "S3Bucket",
   "LocalDefaultProvider",
   "AwsRegion",
