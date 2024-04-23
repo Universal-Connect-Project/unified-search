@@ -51,7 +51,7 @@ async function loadData(){
   function elapsedSeconds(){
     return (new Date() - start) / 1000;
   }
-  let versions = await axios.get(`${config.DATABASEURL}version.json`).then(res => res.data);
+  let versions = await axios.get(`${config.DataBaseUrl}version.json`).then(res => res.data);
   let version = versions[config.Env];
   let ret = {version};
   if(db.version === version){
@@ -59,7 +59,7 @@ async function loadData(){
     return
   }
   logger.info(`loading data, version: ${version}, ${elapsedSeconds()}s`);
-  const response = await axios.get(config.DATABASEURL + `db/${version}.csv`, {
+  const response = await axios.get(config.DataBaseUrl + `db/${version}.csv`, {
     responseType: 'stream'
   }).catch(err => {
     if(err?.response?.status === 404){
@@ -79,7 +79,7 @@ async function loadData(){
   logger.info(`loading index, version: ${version}, ${elapsedSeconds()}s`);
   //ret.searchIndex = tools.buildIndex(arr); 
 
-  const indexResponse = await axios.get(config.DATABASEURL + `db/${version}.txt`, {
+  const indexResponse = await axios.get(config.DataBaseUrl + `db/${version}.txt`, {
     responseType: 'stream'
   }).catch(err => {})
   const indexStream = indexResponse?.data;

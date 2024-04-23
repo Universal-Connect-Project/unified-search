@@ -7,7 +7,7 @@ Provides a universal institution search and multi-provider mapping service
 - `http://localhost:8082/api/*`
 
 By default, the service has only one dependency: 
-- Ensure the index data source url as `DATABASEURL` in [config.js](./src/server/config.js), this is Optional:
+- Ensure the index data source url as `DataBaseUrl` in [config.js](./src/server/config.js), this is Optional:
   The existing config value points to a UCP-hosted data source, which is publicly accessible. Although it is rapidly updated, you might want to pull and cache your own version.
 - The server will load the index from the url at start up, then check the `version.json` periodically, and update the index if there is a new version.
 - If a new version is published for the specific env, it takes ~30s for the instance to discover it and update the index.  
