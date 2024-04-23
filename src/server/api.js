@@ -52,7 +52,7 @@ async function loadData(){
     return (new Date() - start) / 1000;
   }
   let versions = await axios.get(`${config.DataBaseUrl}version.json`).then(res => res.data);
-  let version = versions[config.Env];
+  let version = versions[config.Env ? config.Env.toLowerCase() : 'dev'];
   let ret = {version};
   if(db.version === version){
     logger.info(`DataBaseUrl ${config.DataBaseUrl}`)
