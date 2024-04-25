@@ -4,7 +4,7 @@ const { AnalyticsServiceEndpoint } = require("./config");
 describe("Default API", () => {
   describe("Ping", () => {
     it("Pings api", async () => {
-      const res = await http.get(`${AnalyticsServiceEndpoint}/ping`)
+      const res = await http.get(`${AnalyticsServiceEndpoint}ping`)
       expect(res).toEqual({})
     })
   })
