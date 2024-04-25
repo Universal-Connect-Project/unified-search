@@ -28,14 +28,12 @@ jobs:
           npm ci
 
       - name: 'Create env file'
-        env:
-          env_vars: ${{ needs.setup-env.outputs.env_vars }}
         run: |
           touch .env
           
           # Vars
-          #echo -e ${{ env.env_vars }} >> .env
-          echo "${{ env.env_vars }}" >> $GITHUB_ENV
+          #echo -e ${{ needs.setup-env.outputs.env_vars }} >> .env
+          echo "${{ needs.setup-env.outputs.env_vars }}" >> $GITHUB_ENV
 
       - name: Run Jest Tests
         run: |

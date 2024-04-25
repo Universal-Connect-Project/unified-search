@@ -31,7 +31,7 @@ jobs:
           # Vars
           echo -e "${{ needs.setup-env.outputs.env_vars }}" >> .env
           echo VERSION="" >> .env
-          echo "${{ env.env_vars }}" >> $GITHUB_ENV
+          echo "${{ needs.setup-env.outputs.env_vars }}" >> $GITHUB_ENV
 
       - name: 'Cypress run'
         uses: cypress-io/github-action@v6
