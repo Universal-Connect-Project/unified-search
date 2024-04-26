@@ -123,3 +123,5 @@ cypress/screenshots
 # IDE related
 .vscode/
 .idea/
+
+.DS_Store

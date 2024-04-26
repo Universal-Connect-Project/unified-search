@@ -7,7 +7,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "dev": "npx nodemon src/server/index.js",
-    "test": "jest --no-coverage --passWithNoTests",
+    "test": "jest --no-coverage",
     "test:watch": "jest --no-coverage --watch",
     "test:coverage": "npm test -- --verbose --coverage --watchAll",
     "test:clear": "npm test -- --clearCache",
