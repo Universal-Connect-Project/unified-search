@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const api = require('./api.js')
 const preference = require('./preference.js')
 const logger = require('../infra/logger.js')
+const { handlePing } = require('./apiHandlers.js')
 
 process.on('unhandledRejection', error => {
   logger.error('unhandledRejection: ' + error.message, error)
@@ -22,9 +23,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/ping', function (req, res) {
-  res.sendStatus(200)
-})
+app.get('/ping', handlePing)
 
 api.mapApi(app)
 preference.mapApi(app)

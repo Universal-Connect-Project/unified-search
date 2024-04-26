@@ -1,11 +1,14 @@
-const http = require("../infra/http");
-const { AnalyticsServiceEndpoint } = require("./config");
+const { handlePing } = require("./apiHandlers");
 
 describe("Default API", () => {
-  describe("Ping", () => {
-    it("Pings api", async () => {
-      const res = await http.get(`${AnalyticsServiceEndpoint}ping`)
-      expect(res).toEqual({})
+  describe("handlePing", () => {
+    it("responses with 200", () => {
+      const res = {
+        sendStatus: jest.fn()
+      }
+
+      expect(handlePing(null, res))
+      expect(res.sendStatus).toHaveBeenCalledWith(200)
     })
   })
 })

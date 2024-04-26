@@ -5,6 +5,7 @@ const axios = require('axios')
 const tools = require('../indexer/tools')
 const url = require('url')
 const { getPreference } = require('./preference')
+const { getProviders } = require('./apiHandlers')
 
 let db = {
 }
@@ -197,9 +198,7 @@ async function searchInstitutions (name, providers) {
 
 module.exports = {
   mapApi: function (app) {
-    app.get('/api/providers', function (req, res) {
-      res.send(['sophtron', 'mx', 'finicity', 'akoya'])
-    }),
+    app.get('/api/providers', getProviders),
     app.get('/api/institutions/:provider?', async function (req, res) {
       // let { provider } = req.params;
       const { query, providers } = req.query
